@@ -177,6 +177,55 @@ importers:
         specifier: ^1.52.0
         version: 1.52.0
 
+  packages/2025-19-12-smallcase-search:
+    dependencies:
+      slidev-theme-geist:
+        specifier: ^0.8.1
+        version: 0.8.1
+    devDependencies:
+      '@iconify-json/bi':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/carbon':
+        specifier: ^1.2.8
+        version: 1.2.8
+      '@iconify-json/devicon':
+        specifier: ^1.2.24
+        version: 1.2.24
+      '@iconify-json/fluent':
+        specifier: ^1.2.22
+        version: 1.2.22
+      '@iconify-json/icon-park-outline':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/logos':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/ph':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/ri':
+        specifier: ^1.2.5
+        version: 1.2.5
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.36
+        version: 1.2.36
+      '@iconify-json/svg-spinners':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/twemoji':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify/utils':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@proj-airi/lobe-icons':
+        specifier: ^1.0.7
+        version: 1.0.7
+      playwright-chromium:
+        specifier: ^1.52.0
+        version: 1.52.0
+
   packages/talks: {}
 
 packages:
@@ -1099,6 +1148,10 @@ packages:
 
   '@slidev/types@0.22.7':
     resolution: {integrity: sha512-mCVKQbcGTv6d6n9aHpYNp5U04HF+FMbpY083vqpJ6Folc805BB1Am02eubaW0J6nM+dSOu2dDgPY+kIjs75sAQ==}
+    engines: {node: '>=14.0.0'}
+
+  '@slidev/types@0.28.10':
+    resolution: {integrity: sha512-XcJ12giBaeSHxImlYuDfO1XW686kWDq4uoftnPZyIxhNew4FREsbOLY8oG5Nz5qn05qSsnSDQGo55EbantKvfg==}
     engines: {node: '>=14.0.0'}
 
   '@slidev/types@0.47.5':
@@ -3562,6 +3615,10 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
+  slidev-theme-geist@0.8.1:
+    resolution: {integrity: sha512-2DET+H1tvaFQyKYimg+4RlShLLnyOdW40GFfOH8kAJbsI1JOwzDiLv1UjyFO11y9O0/074/YIwArz9xg4Zde5A==}
+    engines: {node: '>=14', slidev: '>=0.20'}
+
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
@@ -5118,6 +5175,8 @@ snapshots:
       prism-theme-vars: 0.2.4
 
   '@slidev/types@0.22.7': {}
+
+  '@slidev/types@0.28.10': {}
 
   '@slidev/types@0.47.5': {}
 
@@ -8054,6 +8113,12 @@ snapshots:
       totalist: 3.0.1
 
   sisteransi@1.0.5: {}
+
+  slidev-theme-geist@0.8.1:
+    dependencies:
+      '@slidev/types': 0.28.10
+      codemirror-theme-vars: 0.1.2
+      prism-theme-vars: 0.2.4
 
   source-map-js@1.2.1: {}
 

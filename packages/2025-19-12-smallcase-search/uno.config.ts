@@ -31,9 +31,9 @@ export default mergeConfigs([
       }),
       presetWebFonts({
         fonts: {
-          sans: 'Instrument Serif',
-          cn: 'Noto Serif SC',
-          hand: 'Playwrite IT Moderna',
+          sans: 'Inter',
+          serif: 'Instrument Serif',
+          mono: 'Geist Mono',
         },
       }),
     ],

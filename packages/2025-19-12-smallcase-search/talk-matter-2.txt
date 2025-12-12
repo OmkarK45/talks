@@ -1,0 +1,231 @@
+Yep. Here’s a page-wise deck plan that maps cleanly to your narrative (“two consumers”), keeps it punchy for engineers, and gives you spots for diagrams / arrows / code without turning into a wall of text.
+
+0. Visual language (use consistently)
+	•	Icons: 👤 user, 🧑‍💻 dev, 🔗 URL, 🧅 layers, ♿ a11y, ⌨️ keyboard, 🎯 focus, 🧩 components, 🧷 data-attrs, 🎨 CSS
+	•	Motif: “DX ➜ UX” arrow appears in every section header (subtle)
+	•	Color coding: Dev = one accent color, User = another, Shared = neutral
+
+⸻
+
+Slide 1 — Title
+
+In search of DX ✦ Solving for two consumers
+Subtitle: “Search architecture, a11y-by-default, and maintainable CSS patterns”
+Visual: split-screen icon row: 🧑‍💻 ⇄ 👤
+
+⸻
+
+Slide 2 — Agenda (3 acts)
+	1.	Search project learnings (architecture)
+	2.	a11y that scales (React Aria)
+	3.	CSS patterns that don’t rot (data attributes)
+Visual: 3 cards with icons 🔍 ♿ 🎨
+
+⸻
+
+Slide 3 — The thesis: two consumers
+
+Big statement:
+	•	“Code has two consumers: users and developers.”
+	•	“Solve for devs → you ship better UX faster.”
+Diagram (centerpiece):
+YOUR CODE box → splits to DX and UX, with DX arrow feeding UX (“DX accelerates UX”)
+
+⸻
+
+Slide 4 — What “tasteful interface” means (DX lens)
+
+Show a “bad vs good DX” mini-contrast:
+	•	Bad: 6-arg handler / leaky abstractions
+	•	Good: const { onFilterChange } = useSearchPageContext(); onFilterChange(...)
+Visual: two code blocks side by side + ✅/❌ badges
+Icon: 🧩 “API surface” label
+
+⸻
+
+Slide 5 — Product vision: smallcase as a search engine
+
+Frame: “What users were missing / what search should feel like”
+Use a Before → After table (keep it short):
+	•	state lost on refresh → URL as state
+	•	basic results → multi-asset
+	•	hardcoded → config-driven
+Visual: table + small “search engine” icon 🔍 + “share” icon 🔗
+
+⸻
+
+Slide 6 — URL as State Manager (why it’s non-negotiable)
+
+Bullets (max 4):
+	•	survives refresh
+	•	shareable
+	•	back/forward correctness
+	•	bookmarkable
+Center: example URL pill
+Diagram: “URL → state → UI” arrow chain
+Icon: 🔗
+
+⸻
+
+Slide 7 — The layered flow (the money slide)
+
+Your 4-layer stack, as a vertical pipeline with arrows:
+
+URL
+↓ useUrlTabParams (decode/encode)
+↓ SearchPageContext (actions)
+↓ UI components (buttons/filters)
+↓ Infrastructure (React Query / API)
+
+Add a callout bubble: “Button doesn’t care how URL updates.”
+Icon: 🧅
+
+⸻
+
+Slide 8 — “Thinking in layers” with a simple analogy
+
+Keep your coffee analogy but make it one visual:
+	•	Layer 1 intent
+	•	Layer 2 interface
+	•	Layer 3 logic
+	•	Layer 4 infra
+Then 1:1 mapping to search (two columns)
+Visual: two stacked layer cakes 🍰 (or simple tiered blocks)
+
+⸻
+
+Slide 9 — Why Context was right here
+
+A decision slide (engineers love it):
+	•	Context ✅ feature-scoped + co-located URL sync
+	•	Redux/Zustand ⚠️ global + extra plumbing
+Visual: comparison grid with checkmarks
+Add a tiny provider tree diagram (2–3 levels), not code
+
+⸻
+
+Slide 10 — Transition slide: “Act 2 — a11y”
+
+One-liner: “If DX accelerates UX, a11y is UX for everyone.”
+Visual: ♿ + 👤 + ⌨️ icons orbiting
+
+⸻
+
+Slide 11 — a11y is for everyone (not just disabled)
+
+Use your table but compress:
+	•	Keyboard nav → power users / broken trackpad
+	•	Focus indicators → bright light / fatigue
+	•	Labels → automation/QA + SEO-ish
+Visual: 4 tiles with icon + “also helps…”
+
+⸻
+
+Slide 12 — The problem: manual a11y doesn’t scale
+
+Show the 2D grid keyboard navigation snippet cut down:
+	•	only arrow-right/left/down/up + one note: “and then 200+ LOC of edge cases”
+Visual: code block + “maintenance cliff” curve 📉
+
+⸻
+
+Slide 13 — The solution: React Aria Components
+
+Side-by-side:
+	•	Left: manual complexity list (focus refs, announcements, typeahead, RTL…)
+	•	Right: React Aria ListBox layout="grid" snippet
+Visual: ✅ “free features” checklist
+Link badge: “React Aria Grid example” (tiny)
+
+⸻
+
+Slide 14 — Concrete a11y wins in your UI
+
+Pick 3, each as a card:
+	1.	Focus trap in modal / drawer (diagram of tab cycling) 🎯
+	2.	:focus-visible outlines (CSS snippet) ⌨️
+	3.	Inert background / aria-hidden patterns (1 liner) 🧱
+Keep it tactical: “what breaks if you don’t”
+
+⸻
+
+Slide 15 — Transition slide: “Act 3 — CSS that stays sane”
+
+One-liner: “State belongs to JS. Styling logic belongs to CSS.”
+Visual: 🎨 + 🧷
+
+⸻
+
+Slide 16 — Pattern: data attributes as state signals
+
+Introduce the rule:
+	•	TSX sets data-*
+	•	CSS owns variants + compound states
+Visual: tiny DOM screenshot-style mock (attribute visible)
+
+⸻
+
+Slide 17 — Bad vs Good: class explosion vs data attributes
+
+Left: className string soup with ternaries
+Right: data-combobox-open={isOpen} + clean class
+Visual: “diff” vibe + ✅/❌
+
+⸻
+
+Slide 18 — Real combobox styling map (state matrix)
+
+Make this a state grid:
+Rows: open / closed
+Cols: sticky / not sticky
+Cells: what changes (shadow, radius, icon size)
+Then show how CSS expresses it naturally:
+	•	[data-open="true"] …
+	•	[data-sticky="true"][data-open="true"] …
+Visual: matrix + arrows to selectors
+
+⸻
+
+Slide 19 — Debuggability + DevTools friendliness
+
+Show: “You can SEE state in the DOM”
+	•	“Search data-combobox-open to find all styling”
+Visual: DOM inspector mock + highlight of attribute
+
+⸻
+
+Slide 20 — Closing: what we built / takeaways
+
+One slide, 5 bullets:
+	•	URL as state
+	•	layered architecture
+	•	a11y via primitives (React Aria)
+	•	data-attr CSS variants
+	•	DX-first interfaces accelerate UX
+Visual: 5 icons in a row
+
+⸻
+
+Slide 21 — What’s next (optional)
+
+Keep it short (3 items max) so it doesn’t feel like roadmap theater:
+	•	AI suggestions
+	•	analytics dashboard
+	•	saved searches
+Visual: 🚀
+
+⸻
+
+Slide 22 — Resources / Q&A
+
+Links list (React Aria, WCAG, Downshift)
+Big “Q&A” + your DX thesis repeated in small text
+
+⸻
+
+A couple of extra “spice” ideas (high impact, low effort)
+	•	Add a recurring footer: “Two consumers: 🧑‍💻 + 👤”
+	•	Use one recurring diagram that evolves:
+	•	Slide 7 has the full pipeline
+	•	Later slides highlight only the relevant layer (a11y at UI layer, CSS at styling layer)
+	•	Put one memorable metric (even if qualitative): “10x less code / fewer edge-case bugs” (engineers remember ratios)
