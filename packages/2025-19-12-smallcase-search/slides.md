@@ -89,61 +89,136 @@ We'll cover two main areas today:
 -->
 
 ---
-class: py-10
 glowSeed: 120
 ---
 
 # The Thesis: Two Consumers
 
-<span>Every line of code serves two masters</span>
+<span>A search page is built by developers, used by customers</span>
 
-<div mt-16 />
+<div mt-6 />
 
-<div flex items-center justify-center gap-16>
-  <div
-    v-click flex flex-col gap-2 items-center justify-center transition duration-500 ease-in-out
-    :class="$clicks < 1 ? 'translate-x--20 opacity-0' : 'translate-x-0 opacity-100'"
-  >
-    <div flex items-center gap-6>
-      <div i-carbon:code text-8xl text-violet-400 />
+<div flex gap-6>
+  <div v-click flex-1 border="2 solid violet-800/50" rounded-lg overflow-hidden>
+    <div bg="violet-800/30" px-4 py-2 font-semibold flex items-center gap-2>
+      <div i-carbon:code text-violet-400 />
+      Developer Experience (DX)
     </div>
-    <span text-2xl mt-4>Developer</span>
-    <span text-zinc-400 text-sm>DX</span>
-  </div>
-  <div
-    v-after flex flex-col items-center justify-center transition duration-500 ease-in-out delay-300
-    :class="$clicks < 1 ? 'scale-0' : 'scale-100'"
-  >
-    <div i-carbon:arrows-horizontal text-6xl text-zinc-500 />
-  </div>
-  <div
-    v-after flex flex-col gap-2 items-center justify-center transition duration-500 ease-in-out
-    :class="$clicks < 1 ? 'translate-x-20 opacity-0' : 'translate-x-0 opacity-100'"
-  >
-    <div flex items-center gap-6>
-      <div i-carbon:user text-8xl text-sky-400 />
+    <div bg="violet-800/10" px-4 py-3>
+      <div text-sm flex flex-col gap-2>
+        <div>When adding a new filter takes <span text-green-400>30 minutes</span> not 3 days</div>
+        <div>When debugging is <span text-green-400>straightforward</span> not archeology</div>
+        <div>When new team members <span text-green-400>onboard quickly</span></div>
+      </div>
     </div>
-    <span text-2xl mt-4>User</span>
-    <span text-zinc-400 text-sm>UX</span>
+  </div>
+  <div flex items-center>
+    <div i-carbon:arrow-right text-3xl text-zinc-500 />
+  </div>
+  <div v-click flex-1 border="2 solid sky-800/50" rounded-lg overflow-hidden>
+    <div bg="sky-800/30" px-4 py-2 font-semibold flex items-center gap-2>
+      <div i-carbon:user text-sky-400 />
+      User Experience (UX)
+    </div>
+    <div bg="sky-800/10" px-4 py-3>
+      <div text-sm flex flex-col gap-2>
+        <div>Features ship <span text-green-400>faster</span></div>
+        <div>Fewer bugs reach <span text-green-400>production</span></div>
+        <div>Consistent behavior <span text-green-400>builds trust</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div v-click mt-16 text-center>
+<div v-click mt-6 text-center>
   <div border="2 solid zinc-700" bg="zinc-800/40" rounded-lg px-8 py-4 inline-block>
-    <span text-lg>Solve for devs <div i-carbon:arrow-right inline-block translate-y-0.5 mx-2 /> ship better UX faster</span>
+    <span text-lg>Good DX <div i-carbon:arrow-right inline-block translate-y-0.5 mx-2 /> Good UX, faster</span>
   </div>
 </div>
 
 <!--
-Here's the core idea:
+A search page is built by developers and used by customers.
 
-[click] Code has two consumers - developers who write and maintain it, and users who interact with the final product.
+[click] Good DX means adding a filter takes 30 minutes not 3 days, debugging is straightforward, and new team members onboard quickly.
 
-[click] When we solve for developer experience first, we ship better user experiences faster. Good DX accelerates UX delivery.
+[click] This leads to better UX - features ship faster, fewer bugs reach production, and consistent behavior builds trust.
+
+[click] Good DX leads to good UX, faster.
 -->
 
 ---
-class: py-10
+glowSeed: 130
+---
+
+# What Slows Teams Down?
+
+<span>Common patterns that hurt velocity</span>
+
+<div mt-6 />
+
+<div flex flex-col gap-3>
+
+<v-clicks>
+
+<div border="2 solid red-800/50" rounded-lg>
+  <div flex items-center bg="red-800/30" px-3 py-2 text-red-300>
+    <div i-carbon:misuse text-sm mr-2 />
+    <div text-xs><em>Leaky abstractions</em></div>
+  </div>
+  <div bg="red-800/10" px-4 py-3>
+    <div>Components need to know about URL encoding, API pagination, analytics tracking</div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Hard to reuse</div>
+      <div>Hard to test</div>
+      <div>Hard to refactor</div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid orange-800/50" rounded-lg>
+  <div flex items-center bg="orange-800/30" px-3 py-2 text-orange-300>
+    <div i-carbon:arrows-horizontal text-sm mr-2 />
+    <div text-xs><em>Scattered state</em></div>
+  </div>
+  <div bg="orange-800/10" px-4 py-3>
+    <div>Filter state in Redux, sort state in URL, pagination in component state</div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Hard to debug</div>
+      <div>Hard to sync</div>
+      <div>Race conditions</div>
+    </div>
+  </div>
+</div>
+
+<div border="2 solid yellow-800/50" rounded-lg>
+  <div flex items-center bg="yellow-800/30" px-3 py-2 text-yellow-300>
+    <div i-carbon:document-unknown text-sm mr-2 />
+    <div text-xs><em>Tribal knowledge</em></div>
+  </div>
+  <div bg="yellow-800/10" px-4 py-3>
+    <div>"Ask John how filters work" - patterns exist only in people's heads</div>
+    <div text-xs flex gap-2 mt-1 text-zinc-400>
+      <div>Onboarding takes months</div>
+      <div>Knowledge silos</div>
+      <div>Bus factor risk</div>
+    </div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
+
+<!--
+What slows teams down?
+
+[click] Leaky abstractions - when components need to know about URL encoding, API pagination, and analytics
+
+[click] Scattered state - when filter state is in Redux, sort in URL, and pagination in component state
+
+[click] Tribal knowledge - when patterns exist only in people's heads
+-->
+
 ---
 
 # What "Tasteful Interface" Means
@@ -217,7 +292,50 @@ What does "tasteful" actually mean in code?
 -->
 
 ---
-class: py-10
+glow: right
+glowSeed: 180
+---
+
+# Why Software Principles Matter
+
+<span>The fundamentals that guided our decisions</span>
+
+<div mt-6 />
+
+### These aren't new ideas...
+
+<br>
+
+<v-clicks depth="2">
+
+- <span text-violet-400>Single Responsibility</span> - each function, hook, or component does one thing well
+  - A filter button handles clicks, not URL updates
+  - A context provides state, not UI
+- <span text-purple-400>Separation of Concerns</span> - different layers handle different responsibilities
+  - URL encoding is separate from business logic
+  - API calls are separate from state management
+- <span text-fuchsia-400>Dependency Inversion</span> - depend on abstractions, not implementations
+  - Components call `onFilterChange()`, not `router.push()`
+  - Testing becomes trivial with mock contexts
+- <span text-pink-400>Information Hiding</span> - each layer hides its complexity from the one above
+  - The button doesn't know about debouncing or analytics
+  - The context doesn't know about React Query internals
+
+</v-clicks>
+
+<!--
+These aren't new ideas - they're classic software principles:
+
+[click] Single Responsibility - each function, hook, or component does one thing well
+
+[click] Separation of Concerns - different layers handle different responsibilities
+
+[click] Dependency Inversion - depend on abstractions, not implementations
+
+[click] Information Hiding - each layer hides its complexity from the one above
+-->
+
+---
 glow: right
 glowSeed: 200
 ---
@@ -281,7 +399,6 @@ glowSeed: 200
 -->
 
 ---
-class: py-10
 glowSeed: 250
 ---
 
@@ -379,7 +496,79 @@ Why URL as state? Four reasons:
 -->
 
 ---
-class: py-10
+glow: right
+glowSeed: 280
+---
+
+# When URL State Doesn't Fit
+
+<span>Not everything belongs in the URL</span>
+
+<div mt-6 />
+
+<div flex flex-col gap-3>
+
+<v-clicks>
+
+<div flex items-center gap-3 border="1 solid yellow-800/50" bg="yellow-800/10" rounded-lg px-4 py-3>
+  <div i-carbon:password text-2xl text-yellow-400 />
+  <div>
+    <div font-semibold>Sensitive data</div>
+    <div text-sm text-zinc-400>Passwords, tokens, PII - never in URLs (browser history, logs, referrers)</div>
+  </div>
+</div>
+
+<div flex items-center gap-3 border="1 solid yellow-800/50" bg="yellow-800/10" rounded-lg px-4 py-3>
+  <div i-carbon:time text-2xl text-yellow-400 />
+  <div>
+    <div font-semibold>Ephemeral UI state</div>
+    <div text-sm text-zinc-400>Modal open/closed, dropdown expanded, tooltip visible - too noisy for URL</div>
+  </div>
+</div>
+
+<div flex items-center gap-3 border="1 solid yellow-800/50" bg="yellow-800/10" rounded-lg px-4 py-3>
+  <div i-carbon:data-volume text-2xl text-yellow-400 />
+  <div>
+    <div font-semibold>Large data sets</div>
+    <div text-sm text-zinc-400>Selected items array, form drafts - URLs have length limits (~2000 chars)</div>
+  </div>
+</div>
+
+<div flex items-center gap-3 border="1 solid yellow-800/50" bg="yellow-800/10" rounded-lg px-4 py-3>
+  <div i-carbon:flash text-2xl text-yellow-400 />
+  <div>
+    <div font-semibold>High-frequency updates</div>
+    <div text-sm text-zinc-400>Scroll position, cursor location, animation state - would thrash history</div>
+  </div>
+</div>
+
+<div flex items-center gap-3 border="1 solid yellow-800/50" bg="yellow-800/10" rounded-lg px-4 py-3>
+  <div i-carbon:user-profile text-2xl text-yellow-400 />
+  <div>
+    <div font-semibold>User-specific preferences</div>
+    <div text-sm text-zinc-400>Theme, collapsed sections - better in localStorage or user settings</div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
+
+<!--
+Not everything belongs in the URL:
+
+[click] Sensitive data - passwords, tokens, PII should never be in URLs
+
+[click] Ephemeral UI state - modals, dropdowns, tooltips are too noisy
+
+[click] Large data sets - URLs have length limits around 2000 characters
+
+[click] High-frequency updates - scroll position would thrash browser history
+
+[click] User-specific preferences - theme, collapsed sections belong in localStorage
+-->
+
+---
 glow: bottom
 glowSeed: 300
 ---
@@ -388,55 +577,55 @@ glowSeed: 300
 
 <span>The architecture that made it work</span>
 
-<div mt-8 />
+<div mt-4 />
 
 <div flex justify-center>
-  <div flex flex-col gap-3 w-140>
-    <div v-click border="2 solid sky-600" bg="sky-800/30" rounded-lg px-6 py-4 flex items-center gap-4>
-      <div i-carbon:link text-2xl text-sky-400 />
+  <div flex flex-col gap-1 w-120>
+    <div v-click border="1 solid sky-600" bg="sky-800/30" rounded px-4 py-2 flex items-center gap-3>
+      <div i-carbon:link text-lg text-sky-400 />
       <div flex-1>
-        <div font-semibold>URL</div>
-        <div text-sm text-zinc-400>Source of truth</div>
+        <div font-semibold text-sm>URL</div>
+        <div text-xs text-zinc-400>Source of truth</div>
       </div>
     </div>
     <div v-click flex justify-center>
-      <div i-carbon:arrow-down text-2xl text-zinc-500 />
+      <div i-carbon:arrow-down text-lg text-zinc-500 />
     </div>
-    <div v-click border="2 solid violet-600" bg="violet-800/30" rounded-lg px-6 py-4 flex items-center gap-4>
-      <div i-carbon:code text-2xl text-violet-400 />
+    <div v-click border="1 solid violet-600" bg="violet-800/30" rounded px-4 py-2 flex items-center gap-3>
+      <div i-carbon:code text-lg text-violet-400 />
       <div flex-1>
-        <div font-semibold>useUrlTabParams</div>
-        <div text-sm text-zinc-400>Decode / Encode layer</div>
+        <div font-semibold text-sm>useUrlTabParams</div>
+        <div text-xs text-zinc-400>Decode / Encode layer</div>
       </div>
     </div>
     <div v-click flex justify-center>
-      <div i-carbon:arrow-down text-2xl text-zinc-500 />
+      <div i-carbon:arrow-down text-lg text-zinc-500 />
     </div>
-    <div v-click border="2 solid purple-600" bg="purple-800/30" rounded-lg px-6 py-4 flex items-center gap-4>
-      <div i-carbon:flow text-2xl text-purple-400 />
+    <div v-click border="1 solid purple-600" bg="purple-800/30" rounded px-4 py-2 flex items-center gap-3>
+      <div i-carbon:flow text-lg text-purple-400 />
       <div flex-1>
-        <div font-semibold>SearchPageContext</div>
-        <div text-sm text-zinc-400>Actions & state orchestration</div>
+        <div font-semibold text-sm>SearchPageContext</div>
+        <div text-xs text-zinc-400>Actions & state orchestration</div>
       </div>
     </div>
     <div v-click flex justify-center>
-      <div i-carbon:arrow-down text-2xl text-zinc-500 />
+      <div i-carbon:arrow-down text-lg text-zinc-500 />
     </div>
-    <div v-click border="2 solid fuchsia-600" bg="fuchsia-800/30" rounded-lg px-6 py-4 flex items-center gap-4>
-      <div i-carbon:application text-2xl text-fuchsia-400 />
+    <div v-click border="1 solid fuchsia-600" bg="fuchsia-800/30" rounded px-4 py-2 flex items-center gap-3>
+      <div i-carbon:application text-lg text-fuchsia-400 />
       <div flex-1>
-        <div font-semibold>UI Components</div>
-        <div text-sm text-zinc-400>Buttons, filters, cards</div>
+        <div font-semibold text-sm>UI Components</div>
+        <div text-xs text-zinc-400>Buttons, filters, cards</div>
       </div>
     </div>
     <div v-click flex justify-center>
-      <div i-carbon:arrow-down text-2xl text-zinc-500 />
+      <div i-carbon:arrow-down text-lg text-zinc-500 />
     </div>
-    <div v-click border="2 solid pink-600" bg="pink-800/30" rounded-lg px-6 py-4 flex items-center gap-4>
-      <div i-carbon:api text-2xl text-pink-400 />
+    <div v-click border="1 solid pink-600" bg="pink-800/30" rounded px-4 py-2 flex items-center gap-3>
+      <div i-carbon:api text-lg text-pink-400 />
       <div flex-1>
-        <div font-semibold>Infrastructure</div>
-        <div text-sm text-zinc-400>React Query / API calls</div>
+        <div font-semibold text-sm>Infrastructure</div>
+        <div text-xs text-zinc-400>React Query / API calls</div>
       </div>
     </div>
   </div>
@@ -467,7 +656,74 @@ The key: each layer only talks to adjacent layers. A button doesn't know about U
 -->
 
 ---
-class: py-10
+glowSeed: 320
+---
+
+# Why Layers Matter
+
+<span>The button doesn't care how the URL is updated</span>
+
+<div mt-4 />
+
+<div flex gap-6>
+
+<div v-click flex-1>
+
+```tsx
+// Layer 2: Interface (Component)
+<CheckboxGroupList
+  onChange={(value) => onFilterChange('VOLATILITY', value)}
+/>
+
+// Layer 3: Business Logic (Context)
+const onFilterChange = (key, value) => {
+  const updatedFilters = processFilterUpdate({...})
+  updateQueryParams({ filters: updatedFilters })
+}
+
+// Layer 4: Infrastructure (Hook)
+const useDiscoverQuery = (params) => {
+  return useInfiniteQuery({
+    queryFn: () => getMultiAssetDiscover(params),
+  })
+}
+```
+
+</div>
+
+<div v-click flex-1 flex flex-col gap-3>
+  <div text-sm font-semibold text-zinc-400>This separation means:</div>
+  <div border="1 solid green-800/50" bg="green-800/10" rounded px-3 py-2 text-sm flex items-center gap-2>
+    <div i-carbon:checkmark-outline text-green-400 />
+    <span>Button component is reusable</span>
+  </div>
+  <div border="1 solid green-800/50" bg="green-800/10" rounded px-3 py-2 text-sm flex items-center gap-2>
+    <div i-carbon:checkmark-outline text-green-400 />
+    <span>URL logic is centralized</span>
+  </div>
+  <div border="1 solid green-800/50" bg="green-800/10" rounded px-3 py-2 text-sm flex items-center gap-2>
+    <div i-carbon:checkmark-outline text-green-400 />
+    <span>Testing is easier (mock context, not router)</span>
+  </div>
+  <div v-click mt-4 border="2 solid zinc-700" bg="zinc-800/20" rounded-lg px-3 py-2>
+    <div flex items-center gap-2 text-sm>
+      <div i-carbon:idea text-yellow-400 />
+      <span>It just calls <code text-violet-300>onSortChange()</code></span>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!--
+[click] Each layer has one job. The component calls onChange, the context processes the filter update, and the infrastructure handles the API call.
+
+[click] This separation means the button is reusable, URL logic is centralized, and testing is easier.
+
+[click] The button just calls onSortChange() - it doesn't care about URLs or APIs.
+-->
+
+---
 glowSeed: 350
 ---
 
@@ -541,7 +797,50 @@ glowSeed: 350
 -->
 
 ---
-class: py-10
+glow: right
+glowSeed: 380
+---
+
+# Benefits of This Architecture
+
+<span>What we gained from layered design</span>
+
+<div mt-6 />
+
+### This architecture gives us...
+
+<br>
+
+<v-clicks depth="2">
+
+- <span text-violet-400>Testability</span> - each layer can be tested in isolation
+  - Mock the context to test components
+  - Mock the API to test the context
+- <span text-purple-400>Reusability</span> - components work in any context that provides the same interface
+  - FilterChip works on search page, discover page, anywhere
+  - No hardcoded dependencies on specific URLs or APIs
+- <span text-fuchsia-400>Maintainability</span> - changes are localized to one layer
+  - Change URL encoding? Only touch the URL layer
+  - Switch from REST to GraphQL? Only touch infrastructure
+- <span text-pink-400>Debuggability</span> - clear boundaries make bugs easier to find
+  - Is the URL wrong? Check the URL layer
+  - Is the API call wrong? Check infrastructure
+
+</v-clicks>
+
+<!--
+This architecture gives us:
+
+[click] Testability - each layer can be tested in isolation
+
+[click] Reusability - components work in any context that provides the same interface
+
+[click] Maintainability - changes are localized to one layer
+
+[click] Debuggability - clear boundaries make bugs easier to find
+-->
+
+---
 glow: right
 glowSeed: 400
 ---
@@ -617,13 +916,14 @@ glowSeed: 400
 <div v-click mt-8>
 
 ```tsx
-<SearchPageProvider>
-  <UrlSyncProvider>
-    <FilterProvider>
-      <SearchResults />
-    </FilterProvider>
-  </UrlSyncProvider>
-</SearchPageProvider>
+// Clean provider hierarchy
+<SearchPageContextProvider>
+  {/* State + Actions */}
+  <TrackingContextProvider>
+    {/* Analytics */}
+    <SearchPage />
+  </TrackingContextProvider>
+</SearchPageContextProvider>
 ```
 
 </div>
@@ -635,7 +935,7 @@ Why Context over Redux or Zustand?
 
 [click] Global state managers are overkill here - we'd need extra plumbing to sync with URL, and it's global by default when we want feature-scoped.
 
-[click] This is what the provider hierarchy looks like - clean, readable, each provider has a single responsibility.
+[click] This is the actual provider hierarchy - clean, readable, each provider has a single responsibility. State and actions in one, analytics in another.
 -->
 
 ---
@@ -662,7 +962,6 @@ If DX accelerates UX, then accessibility is UX for everyone.
 -->
 
 ---
-class: py-10
 glowSeed: 500
 ---
 
@@ -737,155 +1036,397 @@ Accessibility isn't just for users with disabilities:
 -->
 
 ---
-class: py-10
-glowSeed: 550
+glow: right
+glowSeed: 530
 ---
 
-# The Problem: Manual a11y Doesn't Scale
+# The a11y Mindset
 
-<span>What 2D grid navigation looks like by hand</span>
+<span>How to think about accessibility</span>
 
 <div mt-6 />
 
-<div v-click>
+### Accessibility is a spectrum, not a checkbox...
 
-```ts {all|3-6|7-10|11-15}
+<br>
+
+<v-clicks depth="2">
+
+- <span text-violet-400>Progressive enhancement</span> - start with semantic HTML, enhance with ARIA
+  - A `<button>` is already accessible, a `<div onClick>` is not
+  - Add ARIA only when native elements aren't enough
+- <span text-purple-400>Focus on interactions</span> - if you can click it, you should be able to keyboard it
+  - Every interactive element needs a focus state
+  - Every action needs a keyboard equivalent
+- <span text-fuchsia-400>Announce changes</span> - users need to know what happened
+  - Filter applied? Announce the new count
+  - Error occurred? Announce the message
+- <span text-pink-400>Test with real tools</span> - use screen readers and keyboard-only navigation
+  - VoiceOver on Mac, NVDA on Windows
+  - Tab through your entire app without touching the mouse
+
+</v-clicks>
+
+<!--
+Accessibility is a spectrum, not a checkbox:
+
+[click] Progressive enhancement - start with semantic HTML, enhance with ARIA
+
+[click] Focus on interactions - if you can click it, you should be able to keyboard it
+
+[click] Announce changes - users need to know what happened
+
+[click] Test with real tools - use screen readers and keyboard-only navigation
+-->
+
+---
+glow: right
+glowSeed: 550
+---
+
+# What Manual a11y Looks Like
+
+<span>Just the basics for 2D grid navigation</span>
+
+<div mt-4 />
+
+<div flex gap-4>
+
+<div flex-1>
+
+```ts
 function handleKeyDown(e: KeyboardEvent) {
-  const currentIndex = items.findIndex(item => item.id === focusedId)
+  const idx = items.findIndex(
+    item => item.id === focusedId
+  )
 
   switch (e.key) {
     case 'ArrowRight':
-      const nextIndex = currentIndex + 1
-      if (nextIndex < items.length)
-        setFocusedId(items[nextIndex].id)
+      if (idx + 1 < items.length)
+        setFocusedId(items[idx + 1].id)
       break
     case 'ArrowLeft':
-      const prevIndex = currentIndex - 1
-      if (prevIndex >= 0)
-        setFocusedId(items[prevIndex].id)
+      if (idx - 1 >= 0)
+        setFocusedId(items[idx - 1].id)
       break
     case 'ArrowDown':
-      const belowIndex = currentIndex + columnsPerRow
-      if (belowIndex < items.length)
-        setFocusedId(items[belowIndex].id)
+      if (idx + cols < items.length)
+        setFocusedId(items[idx + cols].id)
       break
-    // ... and 200+ more lines for edge cases
+    // ... 200+ more lines
   }
 }
 ```
 
 </div>
 
-<div v-click mt-6>
+<div v-click flex-1 flex flex-col justify-center>
   <div border="2 solid red-800/50" bg="red-800/20" rounded-lg px-4 py-3>
-    <div flex items-center gap-2>
-      <div i-carbon:warning text-red-400 />
-      <span>Missing: focus management, typeahead, RTL support, screen reader announcements, disabled items...</span>
+    <div font-semibold text-red-300 mb-2>And this is just arrow keys!</div>
+    <div text-sm text-zinc-400>
+      Still missing: Home/End, Page Up/Down, typeahead, focus restoration, disabled items, RTL, screen reader announcements...
     </div>
   </div>
 </div>
 
+</div>
+
 <!--
-[click] Here's what manual 2D grid navigation looks like. Just the basics - arrow keys to move around.
+Here's what manual 2D grid navigation looks like - just the arrow keys.
 
-[click] Arrow right and left for horizontal movement
-
-[click] Arrow down for vertical movement
-
-[click] And this is just the start. We're missing focus management, typeahead search, RTL support, screen reader announcements, disabled item handling... The list goes on. This doesn't scale.
+[click] And this is just arrow keys! We're still missing Home/End, Page Up/Down, typeahead, focus restoration, disabled items, RTL support, screen reader announcements...
 -->
 
 ---
-class: py-10
-glow: right
-glowSeed: 600
+glowSeed: 555
 ---
 
-# The Solution: React Aria Components
+# Why manual a11y doesn't scale
 
-<span>Get a11y for free with the right primitives</span>
+<span>What goes wrong when you build it yourself</span>
 
 <div mt-6 />
 
-<div flex gap-6>
+### For keyboard navigation in a 2D grid...
 
-<div v-click flex-1>
-  <div text-sm font-semibold mb-3 text-zinc-400>Manual implementation needs:</div>
-  <div flex flex-col gap-2 text-sm>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Focus refs management</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Keyboard event handling</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Screen reader announcements</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Typeahead search</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>RTL support</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Disabled item handling</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:close-outline text-red-400 />
-      <span>Selection management</span>
-    </div>
+<br>
+
+<v-clicks depth="2">
+
+- You need to handle <span text-red-400>arrow key navigation</span> in all four directions
+- You need to track <span text-violet-400>focus state</span> across potentially hundreds of items
+- You need to handle <span text-purple-400>edge cases</span> like:
+  - First/last item wrapping
+  - Row boundaries
+  - Disabled items
+- You need to implement <span text-fuchsia-400>typeahead search</span> for quick item selection
+- You need to support <span text-pink-400>RTL layouts</span> where arrow directions are reversed
+- You need to add <span text-sky-400>screen reader announcements</span> for every state change
+
+</v-clicks>
+
+<!--
+For keyboard navigation in a 2D grid...
+
+[click] You need to handle arrow key navigation in all four directions
+
+[click] You need to track focus state across potentially hundreds of items
+
+[click] You need to handle edge cases like first/last item wrapping, row boundaries, and disabled items
+
+[click] You need to implement typeahead search for quick item selection
+
+[click] You need to support RTL layouts where arrow directions are reversed
+
+[click] And you need to add screen reader announcements for every state change
+-->
+
+---
+glowSeed: 560
+---
+
+# The cost of manual a11y
+
+<span>Why this approach fails at scale</span>
+
+<div mt-6 />
+
+### This manual approach is...
+
+<br>
+
+<v-clicks depth="2">
+
+- <span text-red-400>Error-prone</span> - one missed edge case breaks the entire experience for keyboard users
+- <span text-red-400>Hard to test</span> - how do you even write tests for "focus moves correctly"?
+- <span text-red-400>Missing edge cases</span> - you will forget something (everyone does)
+- <span text-red-400>Not screen-reader friendly</span> - announcing state changes requires aria-live regions, role management
+- <span text-red-400>A maintenance nightmare</span> - 200+ lines of code just for arrow keys, and it grows with features
+- <span text-red-400>Not future-proof</span> - new requirements mean rewriting fragile logic
+
+</v-clicks>
+
+<!--
+This manual approach is...
+
+[click] Error-prone - one missed edge case breaks the entire experience for keyboard users
+
+[click] Hard to test - how do you even write tests for "focus moves correctly"?
+
+[click] Missing edge cases - you will forget something, everyone does
+
+[click] Not screen-reader friendly - announcing state changes requires aria-live regions and role management
+
+[click] A maintenance nightmare - 200+ lines of code just for arrow keys, and it grows with every feature
+
+[click] Not future-proof - new requirements mean rewriting fragile logic
+-->
+
+---
+glowSeed: 580
+---
+
+<div flex>
+  <div flex-1>
+    <h1 mb="0!">a11y in the Real World</h1>
+    <span text="sm white/50 nowrap">What the industry says about accessibility</span>
+  </div>
+  <div flex items-center>
+    <div i-simple-icons:adobe text-4xl text-red-500 mr-2 />
   </div>
 </div>
 
-<div v-click flex-1>
-  <div text-sm font-semibold mb-3 text-zinc-400>React Aria gives you:</div>
+<div v-click border-l="4 solid violet-500" bg="violet-900/20" pl-4 py-2 mt-4 rounded-r>
 
-```tsx
-<GridList
-  aria-label="Search results"
-  layout="grid"
-  selectionMode="single"
->
-  {items.map(item => (
-    <GridListItem key={item.id}>
-      {item.name}
-    </GridListItem>
-  ))}
-</GridList>
-```
+**Adobe's accessibility research:**
 
-  <div mt-4 flex flex-col gap-1 text-sm>
-    <div flex items-center gap-2>
-      <div i-carbon:checkmark-outline text-green-400 />
-      <span>All of the above, free</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:checkmark-outline text-green-400 />
-      <span>WCAG compliant</span>
-    </div>
-    <div flex items-center gap-2>
-      <div i-carbon:checkmark-outline text-green-400 />
-      <span>Tested across browsers</span>
-    </div>
-  </div>
+Building accessible components from scratch requires <span v-mark="{ at: 2, color: 'rgb(144, 200, 255)', type: 'underline' }">deep ARIA expertise</span>. Most developers lack the time to learn these intricacies, leading to <span v-mark="{ at: 3, color: 'rgb(144, 200, 255)', type: 'underline' }">inaccessible experiences</span>.
+
 </div>
+
+<div v-click="4" border-l="4 solid purple-500" bg="purple-900/20" pl-4 py-2 mt-4 rounded-r>
+
+**The business case:**
+
+Over <span v-mark="{ at: 5, color: 'rgb(144, 200, 255)', type: 'underline' }">1 billion people</span> worldwide have disabilities. Inaccessible websites don't just fail morally - they <span v-mark="{ at: 6, color: 'rgb(144, 200, 255)', type: 'underline' }">lose customers</span> and face legal risk.
+
+</div>
+
+<div v-click="7" border-l="4 solid fuchsia-500" bg="fuchsia-900/20" pl-4 py-2 mt-4 rounded-r>
+
+**The solution:**
+
+React Aria provides <span v-mark="{ at: 8, color: 'rgb(144, 200, 255)', type: 'underline' }">accessibility primitives</span> that handle the hard parts, letting developers focus on <span v-mark="{ at: 9, color: 'rgb(144, 200, 255)', type: 'underline' }">building features</span>.
 
 </div>
 
 <!--
-[click] Manual implementation requires handling all of these - focus management, keyboard events, screen reader announcements, typeahead, RTL, disabled items, selection...
+Adobe's accessibility research shows:
 
-[click] With React Aria, you get all of that with a simple declarative API. GridList with layout="grid" - done. It's WCAG compliant and tested across browsers.
+[click] Building accessible components from scratch requires deep ARIA expertise.
+
+[click] Most developers lack time to learn these, leading to inaccessible experiences.
+
+[click] The business case is clear - over 1 billion people have disabilities.
+
+[click] Inaccessible websites lose customers and face legal risk.
+
+[click] React Aria provides accessibility primitives.
+
+[click] This lets developers focus on building features.
 -->
 
 ---
-class: py-10
+glowSeed: 600
+---
+
+# React Aria Features
+
+<span>What you get out of the box</span>
+
+<div mt-8 />
+
+<div flex items-center gap-4>
+
+<v-clicks>
+  <div
+    :class="$clicks < 1 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid purple-800" bg="purple-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-12 flex items-center justify-center>
+      <div i-carbon:keyboard h-16 w-16 />
+    </div>
+    <div bg="purple-800/30" w-full px-4 py-2 h="4rem" flex items-center justify-center text-center text-sm>
+      <span>Full keyboard navigation</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 2 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid violet-800" bg="violet-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-12 flex items-center justify-center>
+      <div i-carbon:center-to-fit h-16 w-16 />
+    </div>
+    <div bg="violet-800/30" w-full px-4 py-2 h="4rem" flex items-center justify-center text-center text-sm>
+      <span>Focus management</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 3 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid indigo-800" bg="indigo-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-12 flex items-center justify-center>
+      <div i-carbon:accessibility h-16 w-16 />
+    </div>
+    <div bg="indigo-800/30" w-full px-4 py-2 h="4rem" flex items-center justify-center text-center text-sm>
+      <span>Screen reader support</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 4 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid blue-800" bg="blue-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-12 flex items-center justify-center>
+      <div i-carbon:text-selection h-16 w-16 />
+    </div>
+    <div bg="blue-800/30" w-full px-4 py-2 h="4rem" flex items-center justify-center text-center text-sm>
+      <span>Selection patterns</span>
+    </div>
+  </div>
+  <div
+    :class="$clicks < 5 ? 'translate-x--20' : 'translate-x-0'"
+    rounded-lg
+    border="2 solid sky-800" bg="sky-800/20"
+    backdrop-blur
+    flex-1 h-full
+    transition duration-500 ease-in-out
+  >
+    <div px-5 py-12 flex items-center justify-center>
+      <div i-carbon:globe h-16 w-16 />
+    </div>
+    <div bg="sky-800/30" w-full px-4 py-2 h="4rem" flex items-center justify-center text-center text-sm>
+      <span>RTL & i18n</span>
+    </div>
+  </div>
+</v-clicks>
+
+</div>
+
+<!--
+What does React Aria give you out of the box?
+
+[click] Full keyboard navigation - arrow keys, Tab, Enter, Escape, all handled correctly
+
+[click] Focus management - focus trapping in modals, focus restoration, roving tabindex
+
+[click] Screen reader support - proper ARIA attributes, live announcements, semantic structure
+
+[click] Selection patterns - single, multiple, none - all with correct keyboard and mouse behavior
+
+[click] RTL and internationalization - right-to-left layouts just work, no extra code
+-->
+
+---
+glow: right
+glowSeed: 620
+---
+
+# How React Aria Works
+
+<span>The mental model for using primitives</span>
+
+<div mt-6 />
+
+### React Aria follows a simple pattern...
+
+<br>
+
+<v-clicks depth="2">
+
+- <span text-violet-400>Hooks for behavior</span> - `useButton`, `useListBox`, `useComboBox` handle all the logic
+  - Keyboard events, focus management, ARIA attributes
+  - You bring your own styling and DOM structure
+- <span text-purple-400>Components for convenience</span> - pre-built components when you want less control
+  - `<Button>`, `<ListBox>`, `<ComboBox>` work out of the box
+  - Still fully styleable with CSS
+- <span text-fuchsia-400>State hooks for complex patterns</span> - `useListState`, `useSelectState` manage collections
+  - Selection, disabled items, virtualization
+  - Works with any data shape
+- <span text-pink-400>Composition over configuration</span> - build complex UIs from simple primitives
+  - Combine `useSearchField` + `useListBox` for autocomplete
+  - Each piece is independently testable
+
+</v-clicks>
+
+<!--
+React Aria follows a simple pattern:
+
+[click] Hooks for behavior - useButton, useListBox handle all the logic, you bring styling
+
+[click] Components for convenience - pre-built when you want less control
+
+[click] State hooks for complex patterns - manage collections, selection, virtualization
+
+[click] Composition over configuration - build complex UIs from simple primitives
+-->
+
+---
 glowSeed: 650
 ---
 
@@ -969,7 +1510,6 @@ Here are three concrete wins:
 -->
 
 ---
-class: py-10
 glowSeed: 700
 ---
 
@@ -1067,7 +1607,6 @@ So what did we actually build?
 -->
 
 ---
-class: py-10
 glow: right
 glowSeed: 750
 ---
@@ -1139,7 +1678,6 @@ Four key takeaways:
 -->
 
 ---
-class: py-10
 glowSeed: 800
 ---
 
@@ -1192,7 +1730,6 @@ What's next for search at smallcase?
 -->
 
 ---
-class: py-10
 glowSeed: 850
 ---
 
@@ -1259,18 +1796,18 @@ class: text-center
 glowSeed: 900
 ---
 
-<div text-6xl mb-8>
-  Thank You
-</div>
+<h1 text-6xl mb-8>
+  Thank You!
+</h1>
 
 <div flex justify-center gap-8 mt-8>
   <div flex items-center gap-2 text-zinc-400>
     <div i-carbon:logo-twitter />
-    <span>@omkar_k_</span>
+    <span>@omkar_k45</span>
   </div>
   <div flex items-center gap-2 text-zinc-400>
     <div i-carbon:logo-github />
-    <span>puresamari</span>
+    <span>OmkarK45</span>
   </div>
 </div>
 
