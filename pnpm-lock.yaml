@@ -179,6 +179,61 @@ importers:
 
   packages/2025-19-12-smallcase-search:
     dependencies:
+      slidev-theme-dracula:
+        specifier: ^0.2.0
+        version: 0.2.0
+      slidev-theme-geist:
+        specifier: ^0.8.1
+        version: 0.8.1
+    devDependencies:
+      '@iconify-json/bi':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/carbon':
+        specifier: ^1.2.8
+        version: 1.2.8
+      '@iconify-json/devicon':
+        specifier: ^1.2.24
+        version: 1.2.24
+      '@iconify-json/fluent':
+        specifier: ^1.2.22
+        version: 1.2.22
+      '@iconify-json/icon-park-outline':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/logos':
+        specifier: ^1.2.4
+        version: 1.2.4
+      '@iconify-json/ph':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/ri':
+        specifier: ^1.2.5
+        version: 1.2.5
+      '@iconify-json/simple-icons':
+        specifier: ^1.2.36
+        version: 1.2.36
+      '@iconify-json/svg-spinners':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify-json/twemoji':
+        specifier: ^1.2.2
+        version: 1.2.2
+      '@iconify/utils':
+        specifier: ^2.3.0
+        version: 2.3.0
+      '@proj-airi/lobe-icons':
+        specifier: ^1.0.7
+        version: 1.0.7
+      playwright-chromium:
+        specifier: ^1.52.0
+        version: 1.52.0
+
+  packages/smallcase:
+    dependencies:
+      slidev-theme-dracula:
+        specifier: ^0.2.0
+        version: 0.2.0
       slidev-theme-geist:
         specifier: ^0.8.1
         version: 0.8.1
@@ -1152,6 +1207,10 @@ packages:
 
   '@slidev/types@0.28.10':
     resolution: {integrity: sha512-XcJ12giBaeSHxImlYuDfO1XW686kWDq4uoftnPZyIxhNew4FREsbOLY8oG5Nz5qn05qSsnSDQGo55EbantKvfg==}
+    engines: {node: '>=14.0.0'}
+
+  '@slidev/types@0.42.11':
+    resolution: {integrity: sha512-K7+UWzEQpUe3eEFs7ktm3tw17Ke9ZOJPTy7yGSlZfWl4jCTf9Z0HNKECPLQ3JGL6EkJ4Wyy1y0HE92/20cTn0Q==}
     engines: {node: '>=14.0.0'}
 
   '@slidev/types@0.47.5':
@@ -3615,6 +3674,10 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
+  slidev-theme-dracula@0.2.0:
+    resolution: {integrity: sha512-ndMD27+gUNYt9aXrb4/0vSBHKP007mpD2eCJppzhqXDG1DmN0Q6I6iFz+QvIjOPDKzzPjoYZbsWp6lPLJjgs9g==}
+    engines: {node: '>=14.0.0', slidev: '>=0.19.3'}
+
   slidev-theme-geist@0.8.1:
     resolution: {integrity: sha512-2DET+H1tvaFQyKYimg+4RlShLLnyOdW40GFfOH8kAJbsI1JOwzDiLv1UjyFO11y9O0/074/YIwArz9xg4Zde5A==}
     engines: {node: '>=14', slidev: '>=0.20'}
@@ -3714,6 +3777,10 @@ packages:
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
+
+  theme-vitesse@0.7.9:
+    resolution: {integrity: sha512-wgxHWOIEcIBp/5MAdO8Z5c0vdKy5J5008Kqt/uOYruel9oJ4TrvH3qXgCsatp4ImROd1UWsIgQ3C0R8db38qgA==}
+    engines: {vscode: ^1.43.0}
 
   time-span@5.1.0:
     resolution: {integrity: sha512-75voc/9G4rDIJleOo4jPvN4/YC4GRZrY8yy1uU4lwrB3XEQbWve8zXoO5No4eFrGcTAMYyoY67p8jRQdtA1HbA==}
@@ -5177,6 +5244,8 @@ snapshots:
   '@slidev/types@0.22.7': {}
 
   '@slidev/types@0.28.10': {}
+
+  '@slidev/types@0.42.11': {}
 
   '@slidev/types@0.47.5': {}
 
@@ -8114,6 +8183,13 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
+  slidev-theme-dracula@0.2.0:
+    dependencies:
+      '@slidev/types': 0.42.11
+      codemirror-theme-vars: 0.1.2
+      prism-theme-vars: 0.2.4
+      theme-vitesse: 0.7.9
+
   slidev-theme-geist@0.8.1:
     dependencies:
       '@slidev/types': 0.28.10
@@ -8213,6 +8289,8 @@ snapshots:
       tslib: 2.8.1
 
   tapable@2.2.1: {}
+
+  theme-vitesse@0.7.9: {}
 
   time-span@5.1.0:
     dependencies:

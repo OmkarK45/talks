@@ -1,20 +1,14 @@
 ---
 layout: center
-highlighter: shiki
 css: unocss
 colorSchema: dark
 transition: fade-out
 title: In Search for DX - Building for two consumers
-exportFilename: smallcase Search Architecture - A Deep Dive
 lineNumbers: false
-drawings:
-  persist: false
-mdc: true
 clicks: 0
 preload: false
-glowSeed: 228
 routerMode: hash
-theme: geist
+theme: dracula
 ---
 
 # In Search for DX <span text-violet-400>\*</span>
