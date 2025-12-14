@@ -119,3 +119,130 @@ const FilterButton = ({ filterId, value, label }) => {
 </div>
 </div>
 
+---
+
+# Layered Architecture
+
+<div class="grid grid-cols-2 gap-6 mt-6">
+
+<div>
+<div class="text-sm opacity-50 mb-3">Benefits</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Fewer files touched</span> — changes stay contained</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Faster onboarding</span> — clear patterns, less tribal knowledge</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Easier testing</span> — mock one layer, not 5 systems</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Fewer bugs</span> — clear boundaries prevent side effects</div>
+</div>
+
+<div v-click class="flex items-start gap-2">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Consistent UX</span> — centralized logic = consistent behavior</div>
+</div>
+
+</div>
+
+<div>
+<div class="text-sm opacity-50 mb-3">When to skip</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-red-400">✗</span>
+  <div class="text-sm"><span class="text-red-300 font-semibold">Simple CRUD pages</span> — overkill for basic forms</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-red-400">✗</span>
+  <div class="text-sm"><span class="text-red-300 font-semibold">Prototypes/MVPs</span> — adds friction when exploring</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-red-400">✗</span>
+  <div class="text-sm"><span class="text-red-300 font-semibold">Isolated components</span> — a date picker doesn't need 4 layers</div>
+</div>
+
+<div v-click class="flex items-start gap-2">
+  <span class="text-red-400">✗</span>
+  <div class="text-sm"><span class="text-red-300 font-semibold">Throwaway code</span> — if deleted in 2 weeks, don't architect it</div>
+</div>
+
+</div>
+
+</div>
+
+---
+
+# URL as State Manager
+
+<div class="grid grid-cols-2 gap-6 mt-6">
+
+<div>
+<div class="text-sm opacity-50 mb-3">When to use</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Shareable states</span> — users can share links that restore exact view</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Survives refresh</span> — state persists without local storage</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Back/Forward navigation</span> — browser history just works</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">Bookmarkable</span> — users can save specific views</div>
+</div>
+
+<div v-click class="flex items-start gap-2">
+  <span class="text-green-400">✓</span>
+  <div class="text-sm"><span class="text-green-300 font-semibold">SEO friendly</span> — search engines can index different states</div>
+</div>
+
+</div>
+
+<div>
+<div class="text-sm opacity-50 mb-3">When to skip</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-yellow-400">⚠</span>
+  <div class="text-sm"><span class="text-yellow-300 font-semibold">Sensitive data</span> — passwords, tokens shouldn't be in URL</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-yellow-400">⚠</span>
+  <div class="text-sm"><span class="text-yellow-300 font-semibold">Ephemeral UI state</span> — modal open, tooltip visible</div>
+</div>
+
+<div v-click class="flex items-start gap-2 mb-3">
+  <span class="text-yellow-400">⚠</span>
+  <div class="text-sm"><span class="text-yellow-300 font-semibold">Large data</span> — URL length limits (~2000 chars)</div>
+</div>
+
+<div v-click class="flex items-start gap-2">
+  <span class="text-yellow-400">⚠</span>
+  <div class="text-sm"><span class="text-yellow-300 font-semibold">High-frequency updates</span> — typing in search box</div>
+</div>
+
+</div>
+
+</div>
+
+---

@@ -3,7 +3,7 @@ layout: center
 css: unocss
 colorSchema: dark
 transition: fade-out
-title: In Search for DX - Building for Two Consumers
+title: Building Software for Two Consumers
 lineNumbers: false
 mdc: true
 clicks: 0
@@ -19,7 +19,7 @@ const date = new Date(2025, 11, 19).toLocaleDateString('en-US', {
 })
 </script>
 
-# In Search for DX ✦ Building for Two Consumers
+# Building Software for Two Consumers
 
 Omkar Kulkarni
 
@@ -46,5 +46,8 @@ src: ./slides/05-good-example-clean-interface.md
 src: ./slides/06-real-world-example.md
 ---
 ---
-src: ./slides/07-key-takeaways.md
+src: ./slides/07-ally-for-everyone.md
+---
+---
+src: ./slides/08-key-takeaways.md
 ---
