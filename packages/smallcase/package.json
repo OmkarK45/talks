@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "build-base": "slidev build --out ../../dist/2025-19-12-smallcase-search --base /2025-19-12-smallcase-search/",
+    "build-base": "slidev build --out ../../dist/smallcase --base /smallcase/",
     "dev": "slidev  --open --remote",
     "export": "slidev export --with-clicks --per-slide --wait-until none"
   },
