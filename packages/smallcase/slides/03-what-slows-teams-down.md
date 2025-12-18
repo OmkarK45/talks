@@ -1,6 +1,6 @@
 # What Slows Teams Down?
 
-<div class="grid grid-cols-3 gap-6 mt-12">
+<div class="grid grid-cols-2 gap-6 mt-12">
   <div v-click class="p-6 rounded-xl bg-red-500/10 border border-red-500/30">
     <div class="i-carbon-tree-view-alt text-3xl text-red-400 mb-4"></div>
     <div class="text-lg font-semibold text-red-300 mb-2">Hidden Complexity</div>
@@ -17,6 +17,12 @@
     <div class="i-carbon-user-speaker text-3xl text-red-400 mb-4"></div>
     <div class="text-lg font-semibold text-red-300 mb-2">Tribal Knowledge</div>
     <div class="text-sm opacity-70">New team members take months to understand — debugging becomes archaeology</div>
+  </div>
+
+  <div v-click class="p-6 rounded-xl bg-red-500/10 border border-red-500/30">
+    <div class="i-carbon-document text-3xl text-red-400 mb-4"></div>
+    <div class="text-lg font-semibold text-red-300 mb-2">Lack of Documentation</div>
+    <div class="text-sm opacity-70">Code is hard to understand without proper docs — developers waste time deciphering intent</div>
   </div>
 </div>
 

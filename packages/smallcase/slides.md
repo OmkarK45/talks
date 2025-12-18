@@ -14,7 +14,7 @@ theme: dracula
 <script setup>
 const date = new Date(2025, 11, 19).toLocaleDateString('en-US', {
   month: 'long',
-  day: 'numeric', 
+  day: 'numeric',
   year: 'numeric'
 })
 </script>
@@ -40,13 +40,34 @@ src: ./slides/03-what-slows-teams-down.md
 src: ./slides/04-bad-example-leaky-abstractions.md
 ---
 ---
+src: ./slides/04b-problems-with-leaky-abstraction.md
+---
+---
 src: ./slides/05-good-example-clean-interface.md
+---
+---
+src: ./slides/05b-benefits-of-clean-interface.md
+---
+---
+src: ./slides/05c-another-good-pattern.md
+---
+---
+src: ./slides/05d-url-as-state-manager.md
+---
+---
+src: ./slides/05e-url-state-when-to-use.md
 ---
 ---
 src: ./slides/06-real-world-example.md
 ---
 ---
 src: ./slides/07-ally-for-everyone.md
+---
+---
+src: ./slides/07a-real-world-combobox.md
+---
+---
+src: ./slides/07b-real-world-flyout-menu.md
 ---
 ---
 src: ./slides/08-key-takeaways.md
